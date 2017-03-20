@@ -1,3 +1,4 @@
+#pragma once
 
 // Sum<1,2,3,4,5>...
 template<unsigned long...> struct Sum;
@@ -67,4 +68,3 @@ constexpr auto make_index_array(T const offset = {}) noexcept {
 	static_assert(N >= T{}, "no negative sizes");
 	return detail::make_index_array<T>(offset, std::make_integer_sequence<T, N>{});
 }
-
