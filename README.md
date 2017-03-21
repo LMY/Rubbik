@@ -103,14 +103,14 @@ With [fridrich method](https://en.wikipedia.org/wiki/CFOP_Method) one tends to s
 | Item       | sizeof(Item) |
 | ---------- |:------------:|
 | C8..4-4sigma3 (down corners) and states       | 18           |
-| C12..4 (down corners, mid edges)        | 29           |
+| C12..4 (down corners, mid edges)        | 25           |
 | 8sigma2 (state of down-mid edges)   | 8           |
 | C4..1-4sigma3 (up corners and states) | 11           |
-| C4..1 (up edges)        | 29           |
+| C4..1 (up edges)        | 5           |
 | 4sigma2 (state of up edges)   | 4           |
-| **Total**  | **70**       |
+| **Total**  | **71**       |
 
-This is nice because we can expect that the resulting 70bit integer *decreases* as we approach the solved state.
+This is nice because we can expect that the resulting 71bit integer *decreases* as we approach the solved state.
 
 # 2 Moves
 
