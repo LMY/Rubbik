@@ -8,14 +8,14 @@ a 3x3x3 rubik rube contains 8 corners and 12 edges. The 8 corners can be *dispos
 Total possible states are thus 8!3^8 12! 2^12. Log2 of this number is 69.
 
 From solved state, let's name the corners and the positions of the corners:
-down-left-front = 0
-down-right-front = 1
-down-left-back = 2
-down-right-back = 3
-up-left-front = 4
-up-right-front = 5
-up-left-back = 6
-up-right-back = 7
+* down-left-front = 0
+* down-right-front = 1
+* down-left-back = 2
+* down-right-back = 3
+* up-left-front = 4
+* up-right-front = 5
+* up-left-back = 6
+* up-right-back = 7
 
 
 ## 0.2 Corners, 2x2x2 as part of any NxNxN
@@ -23,26 +23,29 @@ up-right-back = 7
 A 2x2x2 cybe gas 8 corners and any NxNxN cube has 8 corner. Thus, any size-cube contains a 2x2x2 cube that represent the state of the corners.
 
 From solved state, let's name the corners and the positions of the corners:
-down-left = 0
-down-front = 1
-down-right = 2
-down-back = 3
-mid-left-front = 4
-mid-right-front = 5
-mid-left-back = 6
-mid-right-back = 7
-up-left = 8
-up-front = 9
-up-right = 10
-up-back = 11
+* down-left = 0
+* down-front = 1
+* down-right = 2
+* down-back = 3
+* mid-left-front = 4
+* mid-right-front = 5
+* mid-left-back = 6
+* mid-right-back = 7
+* up-left = 8
+* up-front = 9
+* up-right = 10
+* up-back = 11
 
 # 1 Representation
 ## 1.1 Offset
 
 Offset function maps |N <-> |N^d. Offset functions are famous since [mode13h](https://en.wikipedia.org/wiki/Mode_13h), where offset=320y+x. Generally speaking:
+
+```c++
 offset = |X|y + x
 offset = |X||Y|z |X|y + x
 ...
+```
 
 ## 1.2 Sizeof(offset)
 
@@ -100,15 +103,15 @@ keep in mind that 0 is the solved cube
 
 With [fridrich method](https://en.wikipedia.org/wiki/CFOP_Method) one tends to solve C12..8, then C8..4 and C12..8..4, then C8..1 and lastly C12..8..4..1, an alternative rep would be:
 
-| Item       | sizeof(Item) |
-| ---------- |:------------:|
-| C8..4-4sigma3 (down corners) and states       | 18           |
-| C12..4 (down corners, mid edges)        | 25           |
-| 8sigma2 (state of down-mid edges)   | 8           |
-| C4..1-4sigma3 (up corners and states) | 11           |
-| C4..1 (up edges)        | 5           |
-| 4sigma2 (state of up edges)   | 4           |
-| **Total**  | **71**       |
+| Item          | what is it              | sizeof(Item) |
+| ------------- | ----------------------- |:------------:|
+| C8..4-4sigma3 | down corners and states | 18           |
+| C12..4        | down corners, mid edges | 25           |
+| 8sigma2       | state of down-mid edges | 8            |
+| C4..1-4sigma3 | up corners and states   | 11           |
+| C4..1         | up edges                | 5            |
+| 4sigma2       | state of up edges       | 4            |
+| **Total**     |                         | **71**       |
 
 This is nice because we can expect that the resulting 71bit integer *decreases* as we approach the solved state.
 
@@ -145,11 +148,12 @@ position1[perm[x]] = position[perm[x+1]]
 ## 2.2 Corners, states
 
 Let's name the state for a corner observing where the white/yellow face points
-| points | state |
-| -------| :----:|
-| up/down| 0 |
-| front/back| 1 |
-| right/left | 2 |
+
+| points     | state |
+| ---------- | -----:|
+| up/down    | 0     |
+| front/back | 1     |
+| right/left | 2     |
 
 R,Ri,L,Li moves leave state=2 invariated and toggle states 0<->1
 F,Fi,B,Bi moves leave state=1 invariated and toggle states 0<->2
@@ -172,11 +176,12 @@ using the same permutation function we used for corners
 # 3 Edges, states
 
 Let's name the state for a corner observing where the white/yellow/red/orange face points
-| points | state |
-| -------| :----:|
-| up/down| 0 |
-| front/back| **0** |
-| right/left | 2 |
+
+| points     | state  |
+| ---------- | :----: |
+| up/down    | 0      |
+| front/back | **0**  |
+| right/left | 2      |
 
 F,Fi,B,Bi toggle state 0<->1.
 The other moves leave edge state constant.
