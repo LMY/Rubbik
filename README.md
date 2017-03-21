@@ -155,9 +155,9 @@ Let's name the state for a corner observing where the white/yellow face points
 | front/back | 1     |
 | right/left | 2     |
 
-R,Ri,L,Li moves leave state=2 invariated and toggle states 0<->1
-F,Fi,B,Bi moves leave state=1 invariated and toggle states 0<->2
-U,Ui,D,Di moves leave state=0 invariated and toggle states 2<->1
+* R,Ri,L,Li moves leave state=2 invariated and toggle states 0<->1
+* F,Fi,B,Bi moves leave state=1 invariated and toggle states 0<->2
+* U,Ui,D,Di moves leave state=0 invariated and toggle states 2<->1
 
 ## 2.3 Edges, permutations
 
@@ -183,8 +183,8 @@ Let's name the state for a corner observing where the white/yellow/red/orange fa
 | front/back | **0**  |
 | right/left | 2      |
 
-F,Fi,B,Bi toggle state 0<->1.
-The other moves leave edge state constant.
+* F,Fi,B,Bi toggle state 0<->1.
+* The other moves leave edge state constant.
 
 # 4 Move sequences
 
